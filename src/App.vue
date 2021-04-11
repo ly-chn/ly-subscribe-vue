@@ -22,7 +22,10 @@
           activatable
           item-key="name"
           open-on-click>
-        <template v-slot:append="{}"></template>
+        <template v-slot:append="{}">
+          +
+          <!--todo: 置于每个标签后, 鼠标浮动时显示-->
+        </template>
       </v-treeview>
     </v-main>
   </v-app>
