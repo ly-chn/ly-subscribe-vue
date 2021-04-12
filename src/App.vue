@@ -15,15 +15,14 @@
     </v-app-bar>
 
     <v-main>
-      <v-treeview
-          v-model="tree"
-          :open="initiallyOpen"
-          :items="items"
-          activatable
-          item-key="name"
-          open-on-click>
-        <template v-slot:append="{}">
-          +
+      <v-treeview v-model="tree" :open="initiallyOpen" :items="items" activatable item-key="name" open-on-click>
+        <template v-slot:label="{item}">
+          <div class="operational-button">
+            {{item.name}}
+            <v-item-group class="d-inline-block invisible hover-visible">
+              <v-btn text fab x-small color="secondary">+</v-btn>
+            </v-item-group>
+          </div>
           <!--todo: 置于每个标签后, 鼠标浮动时显示-->
         </template>
       </v-treeview>
@@ -104,3 +103,9 @@ export default {
   }),
 };
 </script>
+<style scoped lang="sass">
+
+.operational-button:hover .invisible
+  visibility: visible
+
+</style>
