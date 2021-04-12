@@ -30,19 +30,18 @@
           </v-avatar>
         </template>
         <template v-slot:label="{item}">
-          <div>
-            <popper :delay-on-mouse-out='50'
-                    :options="{placement: 'top'}"
-                    enter-active-class='fade-enter-active'
-                    leave-active-class='fade-leave-active'
-                    tigger='clickToOpen'
-                    transition='fade'>
-
-              <span slot='reference'>
+          <v-menu min-width='none' offset-y open-on-hover top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn v-bind="attrs" v-on="on" color="primary" dark>
                 {{ item.name }}
-              </span>
-            </popper>
-          </div>
+              </v-btn>
+            </template>
+            <div class="operational-button">
+              <v-icon @click.stop='onClick'>mdi-plus</v-icon>
+              <v-icon @click.stop='onClick'>mdi-plus</v-icon>
+              <v-icon @click.stop='onClick'>mdi-plus</v-icon>
+            </div>
+          </v-menu>
         </template>
       </v-treeview>
     </v-main>
@@ -76,9 +75,3 @@ export default {
   },
 };
 </script>
-<style lang="sass" scoped>
-
-.operational-button:hover .invisible
-  visibility: visible
-
-</style>
