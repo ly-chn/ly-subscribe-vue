@@ -5,12 +5,14 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 import './assets/tailwind.css'
+import './plugins/vue-popper'
+import './assets/default.sass'
 
 Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
-  vuetify,
-  render: h => h(App)
+    router,
+    store,
+    vuetify,
+    render: h => h(App)
 }).$mount('#app')

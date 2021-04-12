@@ -7,7 +7,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn fab small color="pink">
+      <v-btn color="pink" fab small>
         <v-icon color="white">
           mdi-heart
         </v-icon>
@@ -15,15 +15,34 @@
     </v-app-bar>
 
     <v-main>
-      <v-treeview v-model="tree" :open="initiallyOpen" :items="items" activatable item-key="name" open-on-click>
+      <v-treeview :items="items"
+                  activatable
+                  class='w-max overflow-auto scroll'
+                  color="primary"
+                  dense
+                  hoverable
+                  item-key="name"
+                  open-all
+                  open-on-click>
+        <template v-slot:prepend='{item}'>
+          <v-avatar color="indigo" size="18">
+            <span class="white--text">许</span>
+          </v-avatar>
+        </template>
         <template v-slot:label="{item}">
-          <div class="operational-button">
-            {{item.name}}
-            <v-item-group class="d-inline-block invisible hover-visible">
-              <v-btn text fab x-small color="secondary">+</v-btn>
-            </v-item-group>
+          <div>
+            <popper :delay-on-mouse-out='50'
+                    :options="{placement: 'top'}"
+                    enter-active-class='fade-enter-active'
+                    leave-active-class='fade-leave-active'
+                    tigger='clickToOpen'
+                    transition='fade'>
+
+              <span slot='reference'>
+                {{ item.name }}
+              </span>
+            </popper>
           </div>
-          <!--todo: 置于每个标签后, 鼠标浮动时显示-->
         </template>
       </v-treeview>
     </v-main>
@@ -35,75 +54,29 @@
 export default {
   name: 'App',
 
-  data: () => ({
-    initiallyOpen: ['public'],
-    files: {
-      html: 'mdi-language-html5',
-      js: 'mdi-nodejs',
-      json: 'mdi-code-json',
-      md: 'mdi-language-markdown',
-      pdf: 'mdi-file-pdf',
-      png: 'mdi-file-image',
-      txt: 'mdi-file-document-outline',
-      xls: 'mdi-file-excel',
-    },
-    tree: [],
-    items: [
-      {
-        name: '.git',
-      },
-      {
-        name: 'node_modules',
-      },
-      {
-        name: 'public',
-        children: [
-          {
-            name: 'static',
-            children: [{
-              name: 'logo.png',
-              file: 'png',
-            }],
-          },
-          {
-            name: 'favicon.ico',
-            file: 'png',
-          },
-          {
-            name: 'index.html',
-            file: 'html',
-          },
-        ],
-      },
-      {
-        name: '.gitignore',
-        file: 'txt',
-      },
-      {
-        name: 'babel.config.js',
-        file: 'js',
-      },
-      {
-        name: 'package.json',
-        file: 'json',
-      },
-      {
-        name: 'README.md',
-        file: 'md',
-      },
-      {
-        name: 'vue.config.js',
-        file: 'js',
-      },
-      {
-        name: 'yarn.lock',
-        file: 'txt',
-      },
-    ],
+  data   : () => ({
+    a    : true,
+    items: [{
+      name: '.git',
+    }, {
+      name: 'node_modules',
+    }, {
+      name    : 'public',
+      children: [{
+        name: 'static',
+      }],
+    }, {
+      name: '.gitignore',
+    },],
   }),
+  methods: {
+    onClick() {
+      alert(1)
+    }
+  },
 };
 </script>
-<style scoped lang="sass">
+<style lang="sass" scoped>
 
 .operational-button:hover .invisible
   visibility: visible
