@@ -4,16 +4,21 @@
               class='w-max overflow-auto scroll'
               color="primary"
               hoverable
-              item-key="name"
+              item-key=name
               open-all
-              open-on-click>
+              open-on-click
+              shaped>
     <template v-slot:prepend='{item}'>
-      <v-avatar color="indigo" size="18">
-        <span class="white--text">许</span>
+      <v-avatar color="indigo" size="36">
+        <v-img :alt="item.creator&&item.creator.nickname" :src="item.creator&&item.creator.avatar">
+          <template v-slot:placeholder>
+            <div class='justify-center white--text align-middle'>许</div>
+          </template>
+        </v-img>
       </v-avatar>
     </template>
     <template v-slot:label="{item}">
-      <v-menu min-width='none' offset-y open-on-hover top>
+      <v-menu offset-y open-on-hover top>
         <template v-slot:activator="{ on, attrs }">
               <span v-bind="attrs" v-on="on">
                 {{ item.name }}
@@ -34,20 +39,35 @@
 <script>
 export default {
   name: "task-tree",
-  data: () => ({
-    items: [{
-      name: '.git',
-    }, {
-      name: 'node_modules',
-    }, {
-      name: 'public',
-      children: [{
-        name: 'static',
-      }],
-    }, {
-      name: '.gitignore',
-    },]
-  }),
+  data() {
+    return {
+      // https://imgtu.com/i/ccvOmt
+      // https://imgtu.com/i/ccvb6A
+      // https://imgtu.com/i/ccvqOI
+      items: [{
+        name: "项目一",
+        creator: {
+          nickname: '张三',
+          avatar: 'https://z3.ax1x.com/2021/04/14/ccvOmt.jpg'
+        }
+      }, {
+        name: "项目二",
+      }, {
+        name: "项目三",
+        children: [{
+          name: "UI",
+        }, {
+          name: "后端",
+        }, {
+          name: "PC端",
+        }, {
+          name: "Android",
+        }]
+      }, {
+        name: "项目四",
+      }]
+    }
+  },
   methods: {
     onClick() {
       alert(1)

@@ -1,6 +1,5 @@
 <template>
   <div>
-    123
     <task-tree/>
   </div>
 </template>
