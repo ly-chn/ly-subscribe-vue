@@ -1,11 +1,11 @@
 <template>
   <v-treeview :items="items"
               activatable
-              class='w-max overflow-auto scroll'
+              class='overflow-auto scroll'
               color="primary"
               dense
               hoverable
-              item-key=name
+              item-key='name'
               open-all
               open-on-click
               shaped>
