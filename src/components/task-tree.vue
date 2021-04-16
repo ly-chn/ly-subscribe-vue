@@ -10,33 +10,29 @@
               open-on-click
               shaped>
     <template v-slot:prepend='{item}'>
-      <v-avatar color="indigo" size="26">
+      <v-avatar :size="config.avatarHeight" color="indigo">
         <v-img :alt="item.creator&&item.creator.nickname" :src="item.creator&&item.creator.avatar">
           <template v-slot:placeholder>
-            <div class='white--text'>许</div>
+            <div :style='{lineHeight: `${config.avatarHeight}px`}' class='white--text h-full'>许</div>
           </template>
         </v-img>
       </v-avatar>
     </template>
     <template v-slot:label="{item}">
-      <v-hover>
-        <template v-slot:default="{ hover }">
-          <div class='relative item-info'>
-            {{ item.name }}
-            <v-fade-transition>
-              <v-overlay v-if="hover" absolute color="#eee">
-                <div class="select-none">
-                  <l-air-btn icon='mdi-plus' title='添加节点' @click='onClick'/>
-                  &emsp;
-                  <l-air-btn icon='mdi-plus' @click='onClick'/>
-                  &emsp;
-                  <l-air-btn icon='mdi-plus' @click='onClick'/>
-                </div>
-              </v-overlay>
-            </v-fade-transition>
-          </div>
+      <v-menu close-delay='50' offset-y open-on-hover top transition="scale-transition">
+        <template v-slot:activator="{ on, attrs }">
+              <span v-bind="attrs" v-on="on">
+                {{ item.name }}
+              </span>
         </template>
-      </v-hover>
+        <div class="select-none">
+          <l-air-btn icon='mdi-plus' @click='onClick'/>
+          &emsp;
+          <l-air-btn icon='mdi-plus' @click='onClick'/>
+          &emsp;
+          <l-air-btn icon='mdi-plus' @click='onClick'/>
+        </div>
+      </v-menu>
     </template>
   </v-treeview>
 </template>
@@ -49,6 +45,9 @@ export default {
   components: {LAirBtn},
   data() {
     return {
+      config: {
+        avatarHeight: 26
+      },
       // https://imgtu.com/i/ccvOmt
       // https://imgtu.com/i/ccvb6A
       // https://imgtu.com/i/ccvqOI
@@ -73,7 +72,8 @@ export default {
         }]
       }, {
         name: "项目四",
-      }]
+      }],
+
     }
   },
   methods: {
