@@ -19,20 +19,24 @@
       </v-avatar>
     </template>
     <template v-slot:label="{item}">
-      <v-menu offset-y open-on-hover top transition="scale-transition">
-        <template v-slot:activator="{ on, attrs }">
-              <span v-bind="attrs" v-on="on">
-                {{ item.name }}
-              </span>
+      <v-hover>
+        <template v-slot:default="{ hover }">
+          <div class='relative item-info'>
+            {{ item.name }}
+            <v-fade-transition>
+              <v-overlay v-if="hover" absolute color="#eee">
+                <div class="select-none">
+                  <l-air-btn icon='mdi-plus' title='添加节点' @click='onClick'/>
+                  &emsp;
+                  <l-air-btn icon='mdi-plus' @click='onClick'/>
+                  &emsp;
+                  <l-air-btn icon='mdi-plus' @click='onClick'/>
+                </div>
+              </v-overlay>
+            </v-fade-transition>
+          </div>
         </template>
-        <div class="select-none">
-          <l-air-btn icon='mdi-plus' @click='onClick'/>
-          &emsp;
-          <l-air-btn icon='mdi-plus' @click='onClick'/>
-          &emsp;
-          <l-air-btn icon='mdi-plus' @click='onClick'/>
-        </div>
-      </v-menu>
+      </v-hover>
     </template>
   </v-treeview>
 </template>
@@ -79,3 +83,13 @@ export default {
   },
 }
 </script>
+
+<style lang='sass' scoped>
+.item-info
+  min-width: 100px
+
+  ::v-deep .v-overlay
+    justify-content: unset
+
+
+</style>
