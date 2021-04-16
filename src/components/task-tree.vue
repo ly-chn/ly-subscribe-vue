@@ -3,16 +3,17 @@
               activatable
               class='w-max overflow-auto scroll'
               color="primary"
+              dense
               hoverable
               item-key=name
               open-all
               open-on-click
               shaped>
     <template v-slot:prepend='{item}'>
-      <v-avatar color="indigo" size="36">
+      <v-avatar color="indigo" size="26">
         <v-img :alt="item.creator&&item.creator.nickname" :src="item.creator&&item.creator.avatar">
           <template v-slot:placeholder>
-            <div class='justify-center white--text align-middle'>许</div>
+            <div class='white--text'>许</div>
           </template>
         </v-img>
       </v-avatar>
@@ -24,7 +25,7 @@
                 {{ item.name }}
               </span>
         </template>
-        <div class="operational-button select-none">
+        <div class="select-none">
           <l-air-btn icon='mdi-plus' @click='onClick'/>
           &emsp;
           <l-air-btn icon='mdi-plus' @click='onClick'/>

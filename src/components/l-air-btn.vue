@@ -1,5 +1,5 @@
 <template>
-  <v-btn class='bg-white shadow-none' color='primary' dark fab outlined x-small>
+  <v-btn max-height='26' max-width='26' class='bg-white shadow-none' color='primary' dark fab outlined x-small>
     <v-icon @click.stop='$emit(`click`)'>{{ icon }}</v-icon>
   </v-btn>
 </template>
