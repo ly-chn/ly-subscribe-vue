@@ -5,19 +5,21 @@
     </v-col>
     <v-divider class='cursor-move' vertical></v-divider>
     <v-col>
-      <div class='w-full h-full'>
-        markdown remark
-      </div>
+      <task-review/>
     </v-col>
   </v-row>
 </template>
 
 <script>
 
-import TaskTree from "@/components/task-tree";
+import TaskTree from "@/views/home/components/task-tree";
+import TaskReview from "@/views/home/components/task-review";
 
 export default {
   name      : 'home',
-  components: {TaskTree},
+  components: {
+    TaskReview,
+    TaskTree
+  },
 }
 </script>

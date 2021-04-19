@@ -102,5 +102,4 @@ export default {
   ::v-deep .v-overlay
     justify-content: unset
 
-
 </style>
