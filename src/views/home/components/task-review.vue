@@ -21,7 +21,14 @@
 
 <script>
 export default {
-  name: "task-review"
+  name: "task-review",
+  data() {
+    return {
+      records: [{
+
+      }]
+    }
+  },
 }
 </script>
 

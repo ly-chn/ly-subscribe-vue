@@ -18,13 +18,7 @@
                 open-all
                 shaped>
       <template v-slot:prepend='{item}'>
-        <v-avatar :size="config.avatarHeight" color="indigo">
-          <v-img :alt="item.creator&&item.creator.nickname" :src="item.creator&&item.creator.avatar">
-            <template v-slot:placeholder>
-              <div :style='{lineHeight: `${config.avatarHeight}px`}' class='white--text h-full'>许</div>
-            </template>
-          </v-img>
-        </v-avatar>
+        <l-avatar :size="config.avatarHeight" :user-id="item.creator"/>
       </template>
       <template v-slot:label="{item}">
         <v-menu close-delay='50' offset-y open-on-hover top transition="scale-transition">
