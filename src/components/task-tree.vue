@@ -1,40 +1,49 @@
 <template>
-  <v-treeview :items="items"
-              activatable
-              class='overflow-auto scroll'
-              color="primary"
-              dense
-              hoverable
-              item-key='name'
-              open-all
-              open-on-click
-              shaped>
-    <template v-slot:prepend='{item}'>
-      <v-avatar :size="config.avatarHeight" color="indigo">
-        <v-img :alt="item.creator&&item.creator.nickname" :src="item.creator&&item.creator.avatar">
-          <template v-slot:placeholder>
-            <div :style='{lineHeight: `${config.avatarHeight}px`}' class='white--text h-full'>许</div>
-          </template>
-        </v-img>
-      </v-avatar>
-    </template>
-    <template v-slot:label="{item}">
-      <v-menu close-delay='50' offset-y open-on-hover top transition="scale-transition">
-        <template v-slot:activator="{ on, attrs }">
+  <v-card flat>
+    <v-sheet class="pa-4">
+      <v-text-field
+          v-model='itemFilterKeyword'
+          clearable
+          prepend-inner-icon="mdi-filter"/>
+    </v-sheet>
+    <v-treeview :filter='this.itemFilter'
+                :items="items"
+                :search='itemFilterKeyword'
+                activatable
+                class='overflow-auto scroll'
+                color="primary"
+                dense
+                hoverable
+                item-key='name'
+                open-all
+                shaped>
+      <template v-slot:prepend='{item}'>
+        <v-avatar :size="config.avatarHeight" color="indigo">
+          <v-img :alt="item.creator&&item.creator.nickname" :src="item.creator&&item.creator.avatar">
+            <template v-slot:placeholder>
+              <div :style='{lineHeight: `${config.avatarHeight}px`}' class='white--text h-full'>许</div>
+            </template>
+          </v-img>
+        </v-avatar>
+      </template>
+      <template v-slot:label="{item}">
+        <v-menu close-delay='50' offset-y open-on-hover top transition="scale-transition">
+          <template v-slot:activator="{ on, attrs }">
               <span v-bind="attrs" v-on="on">
                 {{ item.name }}
               </span>
-        </template>
-        <div class="select-none">
-          <l-air-btn icon='mdi-plus' @click='onClick'/>
-          &emsp;
-          <l-air-btn icon='mdi-plus' @click='onClick'/>
-          &emsp;
-          <l-air-btn icon='mdi-plus' @click='onClick'/>
-        </div>
-      </v-menu>
-    </template>
-  </v-treeview>
+          </template>
+          <div class="select-none">
+            <l-air-btn icon='mdi-plus' @click='onClick'/>
+            &emsp;
+            <l-air-btn icon='mdi-plus' @click='onClick'/>
+            &emsp;
+            <l-air-btn icon='mdi-plus' @click='onClick'/>
+          </div>
+        </v-menu>
+      </template>
+    </v-treeview>
+  </v-card>
 </template>
 
 <script>
@@ -45,13 +54,11 @@ export default {
   components: {LAirBtn},
   data() {
     return {
-      config: {
+      // some param of config
+      config           : {
         avatarHeight: 26
       },
-      // https://imgtu.com/i/ccvOmt
-      // https://imgtu.com/i/ccvb6A
-      // https://imgtu.com/i/ccvqOI
-      items: [{
+      items            : [{
         name   : "项目一",
         creator: {
           nickname: '张三',
@@ -73,14 +80,18 @@ export default {
       }, {
         name: "项目四",
       }],
-
+      itemFilterKeyword: null
     }
   },
   methods: {
     onClick() {
       alert(1)
+    },
+    itemFilter(item, search, itemKey) {
+      // todo: 根据其它信息进行搜索
+      return item[itemKey].toLowerCase().includes(search.toLowerCase())
     }
-  },
+  }
 }
 </script>
 
