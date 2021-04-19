@@ -1,5 +1,5 @@
 import Vue from 'vue'
-// todo 引入方式有问题,webstorm不能识别组件
+// todo 引入方式有问题,webstorm不能识别组件https://www.npmjs.com/package/vue-docgen-web-types
 
 const componentNameRegex = /\/(.*)\//
 const requireComponent = require.context(
