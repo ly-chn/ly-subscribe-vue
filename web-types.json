@@ -1,0 +1,68 @@
+{
+  "framework": "vue",
+  "name": "ly-subscribe-vue",
+  "version": "0.1.0",
+  "contributions": {
+    "html": {
+      "description-markup": "markdown",
+      "types-syntax": "typescript",
+      "tags": [
+        {
+          "name": "l-air-btn",
+          "description": "",
+          "attributes": [
+            {
+              "name": "icon",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "<undefined>"
+            }
+          ],
+          "source": {
+            "module": "./src/components/l-air-btn/index.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "l-avatar",
+          "description": "",
+          "attributes": [
+            {
+              "name": "userId",
+              "description": "用户id",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "size",
+              "description": "大小",
+              "value": {
+                "kind": "expression",
+                "type": "number|string"
+              }
+            },
+            {
+              "name": "userInfo",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              }
+            }
+          ],
+          "source": {
+            "module": "./src/components/l-avatar/index.vue",
+            "symbol": "default"
+          }
+        }
+      ]
+    }
+  }
+}
