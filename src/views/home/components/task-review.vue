@@ -1,9 +1,9 @@
 <template>
   <div class='w-full h-full'>
-    <v-timeline align-top dense>
-      <v-timeline-item fill-dot icon-color='none'>
+    <v-timeline dense>
+      <v-timeline-item small>
         <template v-slot:icon>
-          <l-avatar user-id='1' size='48'/>
+          <l-avatar user-id='1' size='32'/>
         </template>
         <v-text-field flat hide-details label="添加issue" solo>
           <template v-slot:append>
@@ -13,7 +13,7 @@
           </template>
         </v-text-field>
       </v-timeline-item>
-      <v-timeline-item>
+      <v-timeline-item small>
         <template v-slot:icon>
           <l-avatar user-id='1' size='24'/>
         </template>
