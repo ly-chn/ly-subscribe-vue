@@ -4,7 +4,11 @@
       <v-text-field
           v-model='itemFilterKeyword'
           clearable
-          prepend-inner-icon="mdi-filter"/>
+          prepend-inner-icon="mdi-filter">
+        <template v-slot:append-outer>
+          <v-icon title='添加项目' @click='onClick'>mdi-plus</v-icon>
+        </template>
+      </v-text-field>
     </v-sheet>
     <v-treeview :filter='this.itemFilter'
                 :items="items"
@@ -18,7 +22,7 @@
                 open-all
                 shaped>
       <template v-slot:prepend='{item}'>
-        <l-avatar :size="config.avatarHeight" :user-id="item.creator"/>
+        <l-avatar size="24" user-id="1"/>
       </template>
       <template v-slot:label="{item}">
         <v-menu close-delay='50' offset-y open-on-hover top transition="scale-transition">
@@ -28,11 +32,9 @@
               </span>
           </template>
           <div class="select-none">
-            <l-air-btn icon='mdi-plus' @click='onClick'/>
-            &emsp;
-            <l-air-btn icon='mdi-plus' @click='onClick'/>
-            &emsp;
-            <l-air-btn icon='mdi-plus' @click='onClick'/>
+            <l-air-btn class='mx-1' icon='mdi-plus' title='添加子项' @click='onClick'/>
+            <l-air-btn class='mx-1' icon='mdi-plus' @click='onClick'/>
+            <l-air-btn class='mx-1' icon='mdi-plus' @click='onClick'/>
           </div>
         </v-menu>
       </template>
@@ -48,10 +50,6 @@ export default {
   components: {LAirBtn},
   data() {
     return {
-      // some param of config
-      config           : {
-        avatarHeight: 26
-      },
       items            : [{
         name   : "项目一",
         creator: {
@@ -82,7 +80,6 @@ export default {
       alert(1)
     },
     itemFilter(item, search, itemKey) {
-      // todo: 根据其它信息进行搜索
       return item[itemKey].toLowerCase().includes(search.toLowerCase())
     }
   }

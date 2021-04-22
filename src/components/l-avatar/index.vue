@@ -1,8 +1,12 @@
 <template>
   <v-avatar :size="size" color="indigo">
-    <v-img :src="userInfo.avatar">
+    <v-img :src="avatar">
       <template v-slot:placeholder>
-        <div :style='{lineHeight: `${size}px`}' class='white--text h-full'>{{ userInfo.username }}</div>
+        <div :style='{lineHeight: `${size}px`}'
+             :title='record.username'
+             class='white--text h-full'>
+          {{ record.username.substr(0, 1) }}
+        </div>
       </template>
     </v-img>
   </v-avatar>
@@ -15,30 +19,28 @@ export default {
     return {
       record: {
         username: '张三',
-        avatar: ''
+        avatar  : ''
       }
     }
   },
-  props: {
+  props   : {
     /**
      * 用户id
      */
     userId: {
-      type: String
+      type: [String, Number]
     },
     /**
      * 大小
      */
-    size: {
+    size    : {
       type: [Number, String]
-    },
-    userInfo: {
-      type: Object,
-      validator(v) {
-        // must provide username or avatar
-        return !!v.username || !!v.avatar
-      }
     }
+  },
+  computed: {
+    avatar() {
+      return this.record.avatar
+    },
   },
 }
 </script>

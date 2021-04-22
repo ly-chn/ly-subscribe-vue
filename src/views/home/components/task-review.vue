@@ -1,19 +1,25 @@
 <template>
   <div class='w-full h-full'>
-    <v-btn color='green'>New Issues</v-btn>
     <v-timeline align-top dense>
-      <v-timeline-item color="pink" small>
-        <v-row class="pt-1">
-          <v-col cols="3">
-            <strong>5pm</strong>
-          </v-col>
-          <v-col>
-            <strong>New Icon</strong>
-            <div class="caption">
-              Mobile App
-            </div>
-          </v-col>
-        </v-row>
+      <v-timeline-item fill-dot icon-color='none'>
+        <template v-slot:icon>
+          <l-avatar user-id='1' size='48'/>
+        </template>
+        <v-text-field flat hide-details label="添加issue" solo>
+          <template v-slot:append>
+            <v-btn class="mx-0" depressed>
+              Post
+            </v-btn>
+          </template>
+        </v-text-field>
+      </v-timeline-item>
+      <v-timeline-item>
+        <template v-slot:icon>
+          <l-avatar user-id='1' size='24'/>
+        </template>
+        <p>
+          this is a issue for the item
+        </p>
       </v-timeline-item>
     </v-timeline>
   </div>
@@ -24,14 +30,8 @@ export default {
   name: "task-review",
   data() {
     return {
-      records: [{
-
-      }]
+      records: [{}]
     }
   },
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -3,7 +3,7 @@
     <v-col cols='4'>
       <task-tree/>
     </v-col>
-    <v-divider class='cursor-move' vertical></v-divider>
+    <v-divider vertical></v-divider>
     <v-col>
       <task-review/>
     </v-col>
