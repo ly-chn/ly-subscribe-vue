@@ -5,10 +5,10 @@
         <template v-slot:icon>
           <l-avatar size='32' user-id='1'/>
         </template>
-        <div v-if='preview'>
-          <l-preview/>
+        <div v-if='preview.show'>
+          <l-preview ref="a" v-model="preview.value"/>
         </div>
-        <v-text-field v-else flat hide-details label="添加issue" solo @focus='preview = true'/>
+        <v-text-field v-else flat hide-details label="添加issue" solo @focus='preview.show = true'/>
       </v-timeline-item>
       <v-timeline-item small>
         <template v-slot:icon>
@@ -29,7 +29,10 @@ export default {
     return {
       records: [{}],
       // 为true则显示评论功能
-      preview: false
+      preview: {
+        show: false,
+        value: null
+      }
     }
   },
 }
