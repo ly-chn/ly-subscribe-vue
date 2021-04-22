@@ -4,7 +4,7 @@
       <task-tree/>
     </v-col>
     <v-divider vertical></v-divider>
-    <v-col>
+    <v-col cols='6'>
       <task-review/>
     </v-col>
   </v-row>

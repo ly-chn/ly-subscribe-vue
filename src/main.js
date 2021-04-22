@@ -7,6 +7,7 @@ import vuetify from './plugins/vuetify';
 import './assets/tailwind.css'
 import './assets/default.sass'
 import './components'
+import "vditor/src/assets/scss/index.scss"
 
 Vue.config.productionTip = false
 

@@ -1,5 +1,5 @@
 <template>
-  <v-avatar :size="size" color="indigo">
+  <v-avatar :size="size" color="indigo" class='select-none'>
     <v-img :src="avatar">
       <template v-slot:placeholder>
         <div :style='{lineHeight: `${size}px`}'

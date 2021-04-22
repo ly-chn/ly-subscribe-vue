@@ -38,7 +38,7 @@
               "description": "用户id",
               "value": {
                 "kind": "expression",
-                "type": "string"
+                "type": "string|number"
               }
             },
             {
@@ -48,17 +48,27 @@
                 "kind": "expression",
                 "type": "number|string"
               }
-            },
-            {
-              "name": "userInfo",
-              "value": {
-                "kind": "expression",
-                "type": "object"
-              }
             }
           ],
           "source": {
             "module": "./src/components/l-avatar/index.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "l-preview",
+          "description": "",
+          "attributes": [
+            {
+              "name": "placeholder",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "source": {
+            "module": "./src/components/l-preview/index.vue",
             "symbol": "default"
           }
         }

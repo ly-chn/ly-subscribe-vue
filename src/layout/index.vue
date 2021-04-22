@@ -1,13 +1,12 @@
 <template>
   <div style='display: contents'>
     <v-app-bar :elevate-on-scroll='true' app>
-      <v-progress-linear
-          :active='progressBar'
-          :indeterminate='progressBar'
-          absolute
-          bottom
-          rounded
-          color='#6bf'
+      <v-progress-linear :active='progressBar'
+                         :indeterminate='progressBar'
+                         absolute
+                         bottom
+                         color='#6bf'
+                         rounded
       ></v-progress-linear>
 
       <v-toolbar-title>{{ title }}</v-toolbar-title>
@@ -25,7 +24,7 @@
       <router-view/>
     </v-main>
 
-    <v-footer>
+    <v-footer absolute class="bottom-0 inset-x-0">
       <v-col class='text-center' cols='12'>
         {{ new Date().getFullYear() }} — <strong>{{ title }}</strong>
       </v-col>
@@ -34,13 +33,13 @@
 </template>
 
 <script>
-import setting    from '@/setting'
+import setting from '@/setting'
 import {mapState} from "vuex";
 
 export default {
   data() {
     return {
-      title : setting.title,
+      title: setting.title,
     }
   },
   computed: {
