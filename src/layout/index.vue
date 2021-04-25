@@ -24,11 +24,11 @@
       <router-view/>
     </v-main>
 
-    <v-footer absolute class="bottom-0 inset-x-0">
-      <v-col class='text-center' cols='12'>
-        {{ new Date().getFullYear() }} — <strong>{{ title }}</strong>
-      </v-col>
-    </v-footer>
+    <!--<v-footer absolute class="bottom-0 inset-x-0">-->
+    <!--  <v-col class='text-center' cols='12'>-->
+    <!--    {{ new Date().getFullYear() }} — <strong>{{ title }}</strong>-->
+    <!--  </v-col>-->
+    <!--</v-footer>-->
   </div>
 </template>
 

@@ -4,7 +4,7 @@
       <task-tree/>
     </v-col>
     <v-divider vertical></v-divider>
-    <v-col cols='6'>
+    <v-col >
       <task-review/>
     </v-col>
   </v-row>
@@ -14,6 +14,7 @@
 
 import TaskTree from "@/views/home/components/task-tree";
 import TaskReview from "@/views/home/components/task-review";
+import request from "@/util/request";
 
 export default {
   name      : 'home',
@@ -21,5 +22,10 @@ export default {
     TaskReview,
     TaskTree
   },
+  created() {
+    request.get('/vue-element-admin/article/list').then(res=>{
+      console.log(res)
+    })
+  }
 }
 </script>

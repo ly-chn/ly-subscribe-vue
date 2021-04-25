@@ -56,7 +56,7 @@
           }
         },
         {
-          "name": "l-preview",
+          "name": "l-editor",
           "description": "",
           "attributes": [
             {
@@ -65,10 +65,40 @@
                 "kind": "expression",
                 "type": "string"
               }
+            },
+            {
+              "name": "hide",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "change"
             }
           ],
           "source": {
-            "module": "./src/components/l-preview/index.vue",
+            "module": "./src/components/l-editor/index.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "l-editor-preview",
+          "description": "",
+          "attributes": [
+            {
+              "name": "value",
+              "required": true,
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "source": {
+            "module": "./src/components/l-editor-preview/index.vue",
             "symbol": "default"
           }
         }
