@@ -1,8 +1,15 @@
 <template>
-  <v-card elevation='6'>
-    <v-card-text>
-      <div :id='componentId' class='max-h-48'></div>
-    </v-card-text>
+  <v-card :elevation='showContent?6:0'>
+    <div class='pl-1'>
+      <l-air-btn class='text--disabled' icon='mdi-view-headline' @click='showContent = !showContent'/>
+      <l-air-btn class='text--disabled' icon='mdi-arrow-expand-all' @click='showContent = !showContent'/>
+      tow minute ago
+    </div>
+    <v-expand-transition>
+      <v-card-text v-show='showContent' class='p-2'>
+        <div :id='componentId' class='max-h-36'></div>
+      </v-card-text>
+    </v-expand-transition>
   </v-card>
 </template>
 
@@ -15,7 +22,8 @@ export default {
   data() {
     return {
       contentEditor: null,
-      componentId  : ''
+      componentId  : '',
+      showContent  : true
     }
   },
   props  : {

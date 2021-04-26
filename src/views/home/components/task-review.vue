@@ -33,10 +33,10 @@ export default {
         value: null
       },
       tmp:{
-        markdown:`
-# 领导人相关接口
+        markdown:`哈罗你好
+## 领导人相关接口
 
-### 1. create 创建领导人
+#### 1. create 创建领导人
 
 \`\`\`http
 POST http://localhost:9092/leader
@@ -50,7 +50,7 @@ Content-Type: application/json
 }
 \`\`\`
 
-### 2. disable 批量禁用
+#### 2. disable 批量禁用
 
 \`\`\`http
 POST http://localhost:9092/leader/disabled
@@ -59,7 +59,7 @@ Content-Type: application/json
 [1,2,3]
 \`\`\`
 
-### 3. enable 批量启用
+#### 3. enable 批量启用
 
 \`\`\`http
 POST http://localhost:9092/leader/enable
@@ -68,7 +68,7 @@ Content-Type: application/json
 [1,2,3]
 \`\`\`
 
-### 4. remove 批量删除
+#### 4. remove 批量删除
 
 \`\`\`http
 POST http://localhost:9092/leader/remove
@@ -77,7 +77,7 @@ Content-Type: application/json
 [1,2,3]
 \`\`\`
 
-### 5. update 更新单个
+#### 5. update 更新单个
 
 \`\`\`http
 POST http://localhost:9092/leader/update
@@ -91,7 +91,7 @@ Content-Type: application/json
 }
 \`\`\`
 
-### 6. search 检索
+#### 6. search 检索
 
 \`\`\`http
 GET http://localhost:9092/leader/search?keyword=部长&pageNum=1&pageSize=10&fallOff=false
