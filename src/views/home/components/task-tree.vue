@@ -14,6 +14,7 @@
                 :items="items"
                 :search='itemFilterKeyword'
                 activatable
+                :active.sync='activeNode'
                 class='overflow-auto scroll'
                 color="primary"
                 dense
@@ -32,9 +33,9 @@
               </span>
           </template>
           <div class="select-none">
-            <l-air-btn class='mx-1' icon='mdi-plus' title='添加子项' @click='onClick'/>
-            <l-air-btn class='mx-1' icon='mdi-plus' @click='onClick'/>
-            <l-air-btn class='mx-1' icon='mdi-plus' @click='onClick'/>
+            <l-air-btn class='mx-1' icon='mdi-plus-circle' title='添加子项' @click='onClick'/>
+            <l-air-btn class='mx-1' icon='mdi-file-edit' title='修改' @click='onClick'/>
+            <l-air-btn class='mx-1' icon='mdi-information' title='查看详情' @click='onClick'/>
           </div>
         </v-menu>
       </template>
@@ -72,6 +73,7 @@ export default {
       }, {
         name: "项目四",
       }],
+      activeNode: [],
       itemFilterKeyword: null
     }
   },
