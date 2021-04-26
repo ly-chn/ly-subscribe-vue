@@ -1,5 +1,5 @@
 module.exports = [{
-    url: 'task',
+    url: '/task',
     type: 'get',
     response(config) {
         return [{

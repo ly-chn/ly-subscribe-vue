@@ -23,7 +23,7 @@ export default {
     TaskTree
   },
   created() {
-    request.get('/vue-element-admin/article/list').then(res=>{
+    request.get('/task').then(res=>{
       console.log(res)
     })
   }
