@@ -1,15 +1,9 @@
 const Mock = require('mockjs')
 const { param2Obj } = require('./utils')
 
-const user = require('./user')
-const role = require('./role')
-const article = require('./article')
 const search = require('./remote-search')
 
 const mocks = [
-  ...user,
-  ...role,
-  ...article,
   ...search
 ]
 
@@ -23,7 +17,6 @@ function mockXHR() {
   Mock.XHR.prototype.send = function() {
     if (this.custom.xhr) {
       this.custom.xhr.withCredentials = this.withCredentials || false
-
       if (this.responseType) {
         this.custom.xhr.responseType = this.responseType
       }
@@ -33,7 +26,7 @@ function mockXHR() {
 
   function XHR2ExpressReqWrap(respond) {
     return function(options) {
-      let result = null
+      let result
       if (respond instanceof Function) {
         const { body, type, url } = options
         // https://expressjs.com/en/4x/api.html#req
