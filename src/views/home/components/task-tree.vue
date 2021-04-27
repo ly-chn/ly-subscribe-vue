@@ -45,34 +45,14 @@
 
 <script>
 import LAirBtn from "@/components/l-air-btn";
+import {getAllTask} from "@/api/task";
 
 export default {
   name      : "task-tree",
   components: {LAirBtn},
   data() {
     return {
-      items            : [{
-        name   : "项目一",
-        creator: {
-          nickname: '张三',
-          avatar  : 'https://z3.ax1x.com/2021/04/14/ccvOmt.jpg'
-        }
-      }, {
-        name: "项目二",
-      }, {
-        name    : "项目三",
-        children: [{
-          name: "UI",
-        }, {
-          name: "后端",
-        }, {
-          name: "PC端",
-        }, {
-          name: "Android",
-        }]
-      }, {
-        name: "项目四",
-      }],
+      items            : [],
       activeNode: [],
       itemFilterKeyword: null
     }
@@ -83,7 +63,14 @@ export default {
     },
     itemFilter(item, search, itemKey) {
       return item[itemKey].toLowerCase().includes(search.toLowerCase())
+    },
+    async loadTask() {
+      const data = await getAllTask()
+      this.items = data
     }
+  },
+  created() {
+    this.loadTask()
   }
 }
 </script>
