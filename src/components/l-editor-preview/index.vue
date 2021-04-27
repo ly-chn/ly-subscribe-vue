@@ -2,7 +2,15 @@
   <v-card :elevation='showContent?6:0'>
     <div class='pl-1'>
       <l-air-btn class='text--disabled' icon='mdi-view-headline' @click='showContent = !showContent'/>
-      <l-air-btn class='text--disabled' icon='mdi-arrow-expand-all' @click='showContent = !showContent'/>
+      <v-dialog v-model="fullscreen" hide-overlay fullscreen transition="dialog-transition">
+        <v-card>
+          nothing is here
+          <v-btn @click="fullscreen=false" color="primary">click to close dialog</v-btn>
+        </v-card>
+        <template v-slot:activator="{ on, attrs }">
+          <l-air-btn v-bind="attrs" v-on="on" class='text--disabled' icon='mdi-arrow-expand-all'/>
+        </template>
+      </v-dialog>
       tow minute ago
     </div>
     <v-expand-transition>
@@ -22,31 +30,37 @@ export default {
   data() {
     return {
       contentEditor: null,
-      componentId  : '',
-      showContent  : true
+      componentId: '',
+      showContent: true,
+      fullscreen: false
     }
-  },
-  props  : {
+  }
+  ,
+  props: {
     value: {
-      type    : String,
+      type: String,
       required: true
     }
-  },
-  watch  : {
+  }
+  ,
+  watch: {
     value: {
       handler() {
         this.preview()
       }
     }
-  },
+  }
+  ,
   methods: {
     preview() {
       Vditor.preview(document.getElementById(this.componentId), this.value)
     }
-  },
+  }
+  ,
   mounted() {
     this.preview()
-  },
+  }
+  ,
   created() {
     this.componentId = nextElementId()
   }

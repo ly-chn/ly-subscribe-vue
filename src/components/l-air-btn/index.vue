@@ -1,6 +1,6 @@
 <template>
   <v-btn max-height='18'  max-width='18' color='primary' depressed plain tile text fab x-small>
-    <v-icon @click='$emit(`click`)'>{{ icon }}</v-icon>
+    <v-icon @click='$emit(`click`,$event)'>{{ icon }}</v-icon>
   </v-btn>
 </template>
 
