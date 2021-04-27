@@ -33,6 +33,7 @@ export default {
       this.contentEditor = new Vditor(this.componentId,
           {
             height       : 180,
+            icon         : "material",
             toolbarConfig: {
               pin: true,
               // hide: true

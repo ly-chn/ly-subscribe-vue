@@ -10,6 +10,7 @@
         </template>
       </v-text-field>
     </v-sheet>
+    <button @click='loadTask'>xxxxx</button>
     <v-treeview :filter='this.itemFilter'
                 :items="items"
                 :search='itemFilterKeyword'
@@ -64,13 +65,14 @@ export default {
     itemFilter(item, search, itemKey) {
       return item[itemKey].toLowerCase().includes(search.toLowerCase())
     },
-    async loadTask() {
-      const data = await getAllTask()
-      this.items = data
+    loadTask() {
+      getAllTask().then(resp=>{
+        this.items = resp
+      })
     }
   },
   created() {
-    this.loadTask()
+    // this.loadTask()
   }
 }
 </script>

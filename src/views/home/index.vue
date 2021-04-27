@@ -14,18 +14,12 @@
 
 import TaskTree from "@/views/home/components/task-tree";
 import TaskReview from "@/views/home/components/task-review";
-import request from "@/util/request";
 
 export default {
   name      : 'home',
   components: {
     TaskReview,
     TaskTree
-  },
-  created() {
-    request.get('/task').then(res=>{
-      console.log(res)
-    })
   }
 }
 </script>
