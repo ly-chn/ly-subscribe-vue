@@ -3,7 +3,7 @@ import store from '@/store'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
-  timeout: 5000
+  timeout: 5000,
 })
 
 // request interceptor
@@ -16,13 +16,28 @@ service.interceptors.request.use(
   },
   error => {
     return Promise.reject(error)
-  }
+  },
 )
 
 // response interceptor
 service.interceptors.response.use(
   response => {
-    const res = response.data
+    const {
+            code,
+            data,
+          } = response.data
+
+    if (code >= 5000) {
+      return Promise.reject(data.message)
+    }
+    if (code >= 4000) {
+      // todo: 权限错误处理
+      return Promise.reject('权限错误')
+    }
+    if (code >= 3000) {
+      // todo: message toast
+      data.pageInfo
+    }
 
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000) {
@@ -34,7 +49,7 @@ service.interceptors.response.use(
   error => {
     alert(error)
     return Promise.reject(error)
-  }
+  },
 )
 
 export default service

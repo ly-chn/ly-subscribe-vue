@@ -2,20 +2,19 @@
   <v-card flat>
     <v-sheet class="pa-4">
       <v-text-field
-          v-model='itemFilterKeyword'
-          clearable
-          prepend-inner-icon="mdi-filter">
+        v-model='itemFilterKeyword'
+        clearable
+        prepend-inner-icon="mdi-filter">
         <template v-slot:append-outer>
           <v-icon title='添加项目' @click='onClick'>mdi-plus</v-icon>
         </template>
       </v-text-field>
     </v-sheet>
-    <button @click='loadTask'>xxxxx</button>
-    <v-treeview :filter='this.itemFilter'
+    <v-treeview :active.sync='activeNode'
+                :filter='this.itemFilter'
                 :items="items"
                 :search='itemFilterKeyword'
                 activatable
-                :active.sync='activeNode'
                 class='overflow-auto scroll'
                 color="primary"
                 dense
@@ -45,17 +44,17 @@
 </template>
 
 <script>
-import LAirBtn from "@/components/l-air-btn";
-import {getAllTask} from "@/api/task";
+import LAirBtn from '@/components/l-air-btn'
+import {getAllTask} from '@/api/task'
 
 export default {
-  name      : "task-tree",
+  name      : 'task-tree',
   components: {LAirBtn},
   data() {
     return {
       items            : [],
-      activeNode: [],
-      itemFilterKeyword: null
+      activeNode       : [],
+      itemFilterKeyword: null,
     }
   },
   methods: {
@@ -65,15 +64,13 @@ export default {
     itemFilter(item, search, itemKey) {
       return item[itemKey].toLowerCase().includes(search.toLowerCase())
     },
-    loadTask() {
-      getAllTask().then(resp=>{
-        this.items = resp
-      })
-    }
+    async loadTask() {
+      this.items = await getAllTask()
+    },
   },
   created() {
-    // this.loadTask()
-  }
+    this.loadTask()
+  },
 }
 </script>
 
